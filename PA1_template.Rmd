@@ -64,7 +64,7 @@ str(avgPerIntervalNoNA)
 
 A histogram showing the frequency with which the subject
 walked a given total steps per day is shown below. The mean number of steps per day is shown with a blue line.
-```{r, fig.width=5, fig.height=5, fig.align="center"}
+```{r fig1_total_steps, fig.width=5, fig.height=5, fig.align="center"}
 # The totalSteps function plots a histogram showing the frequency of total
 # steps per day
 totalSteps <- function(stepsPerDay, 
@@ -107,7 +107,7 @@ steps per interval and the interval in which it occurs is also calculated in
 [R](http://www.r-project.org/). The
 maximum value is **206.1698**, and occurs in 5 minute interval number **835** in
 row **104** of the aggregated data.
-```{r, fig.width=5, fig.height=5, fig.align="center"}
+```{r fig2_avg_steps, fig.width=5, fig.height=5, fig.align="center"}
 with (avgPerIntervalNoNA, {
         # Determine which row contains the maximum avergage 
         # number of steps per interval
@@ -142,7 +142,7 @@ The 8 days containing NA values are given below.
 days
 ```
 NA values were replaced by the mean value for the intervals in which they occurred. Given that there were 8 days in which all values were NA, this strategy had the net impact of increasing the frequency of total steps per day at the median by 8. This is demonstrated in the plot below.
-```{r, fig.width=10, fig.height=5, fig.align="center"}
+```{r fig3_steps_comparison, fig.width=10, fig.height=5, fig.align="center"}
 # Set NA entries to the mean value for that time interval
 activityAvgNA <- activity
 for (i in c(0, seq(5,2355,5))) {
@@ -171,7 +171,7 @@ summary(stepsPerDayAvgNA$steps.sum)
 ## Are there differences in activity patterns between weekdays and weekends?
 The subject was the most active early in the morning on weekdays, but overall
 was generally more active towards the middle of the day on weekends.
-```{r, fig.width=8, fig.height=10, fig.align="center"}
+```{r fig4_wekend_vs_weekdays, fig.width=8, fig.height=10, fig.align="center"}
 
 # Generate days of the week for activity in which NA values have been
 # replaced with the average for that interval

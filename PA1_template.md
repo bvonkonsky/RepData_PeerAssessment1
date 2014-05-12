@@ -123,7 +123,7 @@ totalSteps <- function(stepsPerDay, title = "Frequency of Total Steps per Day",
 totalSteps(stepsPerDayNoNA)
 ```
 
-<img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
+<img src="figure/fig1_total_steps.png" title="plot of chunk fig1_total_steps" alt="plot of chunk fig1_total_steps" style="display: block; margin: auto;" />
 
 The mean total number of steps per day is  **10766.19**. This was calculated by
 calling the `summary()` function with the significant **digits** parameter set
@@ -168,7 +168,7 @@ with(avgPerIntervalNoNA, {
 })
 ```
 
-<img src="figure/unnamed-chunk-9.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
+<img src="figure/fig2_avg_steps.png" title="plot of chunk fig2_avg_steps" alt="plot of chunk fig2_avg_steps" style="display: block; margin: auto;" />
 
 ```
 ##     interval steps.mean
@@ -225,7 +225,7 @@ totalSteps(stepsPerDayAvgNA, "NA Replaced by Interval Average", yrange = c(0,
     20))
 ```
 
-<img src="figure/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
+<img src="figure/fig3_steps_comparison.png" title="plot of chunk fig3_steps_comparison" alt="plot of chunk fig3_steps_comparison" style="display: block; margin: auto;" />
 
 As expected, the mean and median values remained the same, despite the increase
 in the frequency with which the mean total steps per day occurred.
@@ -288,5 +288,5 @@ with(weekendAvgPerInterval, plot(interval, steps.mean, type = "l", yaxp = c(0,
     200, 2), ylim = c(0, 200), ylab = "Average Steps", main = "weekend"))
 ```
 
-<img src="figure/unnamed-chunk-14.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
+<img src="figure/fig4_wekend_vs_weekdays.png" title="plot of chunk fig4_wekend_vs_weekdays" alt="plot of chunk fig4_wekend_vs_weekdays" style="display: block; margin: auto;" />
 
