@@ -102,6 +102,8 @@ A histogram showing the frequency with which the subject
 walked a given total steps per day is shown below. The mean number of steps per day is shown with a blue line.
 
 ```r
+# The totalSteps function plots a histogram showing the frequency of total
+# steps per day
 totalSteps <- function(stepsPerDay, title = "Frequency of Total Steps per Day", 
     yrange = c(0, 12)) {
     with(stepsPerDay, {
@@ -116,7 +118,8 @@ totalSteps <- function(stepsPerDay, title = "Frequency of Total Steps per Day",
     
 }
 
-# generate a histogram for the total number of steps per day
+# Generate a histogram for the total number of steps per day wit no NA
+# values
 totalSteps(stepsPerDayNoNA)
 ```
 
@@ -173,7 +176,7 @@ with(avgPerIntervalNoNA, {
 ```
 
 
-## Inputing missing values
+## Imputing missing values
 The number of observations containing NA values for the number of steps, and
 the number of days on which this occurs is calculated below.
 
@@ -203,6 +206,7 @@ days
 NA values were replaced by the mean value for the intervals in which they occurred. Given that there were 8 days in which all values were NA, this strategy had the net impact of increasing the frequency of total steps per day at the median by 8. This is demonstrated in the plot below.
 
 ```r
+# Set NA entries to the mean value for that time interval
 activityAvgNA <- activity
 for (i in c(0, seq(5, 2355, 5))) {
     match <- is.na(activityAvgNA$steps) & (activityAvgNA$interval == i)
@@ -210,9 +214,11 @@ for (i in c(0, seq(5, 2355, 5))) {
         i], na.rm = TRUE)
 }
 
+# Compute the total steps for each day using the imputed data
 stepsPerDayAvgNA <- aggregate(steps ~ date, activityAvgNA, sum)
 names(stepsPerDayAvgNA) <- c("date", "steps.sum")
 
+# Plot both versions side by side for comparison purposes
 par(mfrow = c(1, 2))
 totalSteps(stepsPerDayNoNA, "NA Removed", yrange = c(0, 20))
 totalSteps(stepsPerDayAvgNA, "NA Replaced by Interval Average", yrange = c(0, 
