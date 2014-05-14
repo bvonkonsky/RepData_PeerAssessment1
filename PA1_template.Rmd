@@ -3,7 +3,7 @@
 |:---------------|:-------------------------------------------------------|
 |**Author:**     | Brian von Konsky
 |**Created:**    | May 2014
-|**Course:**     | Reproducible Research
+|**Course:**     | Reproducible Research (Johns Hopkins University via Coursera)
 |**Repository:** | [https://github.com/bvonkonsky/RepData_PeerAssessment1](https://github.com/bvonkonsky/RepData_PeerAssessment1)
 
 ## Loading and preprocessing the data
@@ -30,7 +30,7 @@ if (!file.exists(zip)) {
 ```
 **Step 3.** Unzip the archive and read the data.
 ```{r}
-# Unzip the archive
+# Unzip the archive 
 unzip(path.zip)
         
 # Read the data from the csv file
@@ -38,7 +38,7 @@ activity <-read.csv(path.data, header=TRUE)
 ```
 **Step 4.** Convert dates to objects of class Date.
 ```{r}
-activity$date <- as.Date(activity$date)
+activity$date <- as.Date(activity$date) 
 ```
 **Step 5.** Five minute time intervals are initially in the form HHDD.  This 
 must be converted to minutes since the beginning of the day to avoid uneven 
@@ -65,7 +65,7 @@ As shown on the
 help page, the **na.action** default is to ignore NA values.
 ```{r}
 # Aggregate to caluclate the total number of steps per day
-stepsPerDayNoNA  <- aggregate(steps ~ date, activity, sum)
+stepsPerDayNoNA  <- aggregate(steps ~ date, activity, sum) 
 names(stepsPerDayNoNA) <- c("date", "steps.sum")
 
 # Aggregate to calculate the average number of steps per interval
@@ -75,7 +75,7 @@ names(avgPerIntervalNoNA) <- c("interval", "steps.mean")
 **Step 6.** Inspect the activity data frame and its subsets to confirm correct 
 processing.
 ```{r}
-str(activity)
+str(activity) 
 str(stepsPerDayNoNA)
 str(avgPerIntervalNoNA)
 ```
@@ -85,7 +85,7 @@ str(avgPerIntervalNoNA)
 A histogram showing the frequency with which the subject
 walked a given total steps per day is shown below. The mean number of steps per 
 day is shown with a blue line.
-```{r fig1_total_steps, fig.width=5, fig.height=5, fig.align="center"}
+```{r fig1_total_steps, fig.width=5, fig.height=5, fig.align="center"} 
 # The totalSteps function plots a histogram showing the frequency of total
 # steps per day
 totalSteps <- function(stepsPerDay, 
@@ -114,7 +114,7 @@ totalSteps(stepsPerDayNoNA)
 The mean and median total number of steps per day is  **10800**. The mean and
 median, together with other summary statistics is calculated with the 
 `summary()` function.
-```{r}
+```{r} 
 with (stepsPerDayNoNA, summary(steps.sum))
 ```
 
@@ -127,7 +127,7 @@ steps per interval and the interval in which it occurs is also calculated in
 [R](http://www.r-project.org/). The
 maximum value is **206.2**, and occurs in the 5 minute interval commencing at
 minute **515** in row **104** of the aggregated data.
-```{r fig2_avg_steps, fig.width=5, fig.height=5, fig.align="center"}
+```{r fig2_avg_steps, fig.width=5, fig.height=5, fig.align="center"} 
 with (avgPerIntervalNoNA, {
         # Determine which row contains the maximum avergage 
         # number of steps per interval
@@ -151,7 +151,7 @@ The number of observations containing NA values for the number of steps, and
 the number of days on which this occurs is calculated below. As shown, there
 were 2304 NA entries on unique 8 days.
 ```{r}
-activity.na <- subset(activity, is.na(steps))
+activity.na <- subset(activity, is.na(steps)) 
 days   <- unique(activity.na$date)
 num.na <- nrow(activity.na)
 num.days  <- length(days)
@@ -160,13 +160,13 @@ print(paste("There are", num.na, "NA entries on",
 ```
 The 8 days containing NA values are given below.
 ```{r}
-days
+days 
 ```
 NA values were replaced by the mean value for the intervals in which they 
 occurred. Given that there were 8 days in which all values were NA, this 
 strategy had the net impact of increasing the frequency of total steps per day 
 at the median by 8. This is demonstrated in the plot below.
-```{r fig3_steps_comparison, fig.width=10, fig.height=5, fig.align="center"}
+```{r fig3_steps_comparison, fig.width=10, fig.height=5, fig.align="center"} 
 # Set NA entries to the mean value for that time interval
 activityAvgNA <- activity
 for (i in c(0, seq(5,2355,5))) {

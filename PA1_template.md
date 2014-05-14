@@ -3,7 +3,7 @@
 |:---------------|:-------------------------------------------------------|
 |**Author:**     | Brian von Konsky
 |**Created:**    | May 2014
-|**Course:**     | Reproducible Research
+|**Course:**     | Reproducible Research (Johns Hopkins University via Coursera)
 |**Repository:** | [https://github.com/bvonkonsky/RepData_PeerAssessment1](https://github.com/bvonkonsky/RepData_PeerAssessment1)
 
 ## Loading and preprocessing the data
